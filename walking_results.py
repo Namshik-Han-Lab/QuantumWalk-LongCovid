@@ -48,8 +48,6 @@ def FinalDataGeneration():
     
     merged_df.columns=['coined','rwr']
     merged_df = merged_df.join(protein_df['preferred_name'])
-    # merged_df['covid_gene_acute'] = merged_df['preferred_name'].isin(covid_gene_acute_severe_raw)
-    # merged_df['covid_gene_6m'] = merged_df['preferred_name'].isin(covid_gene_6M_severe_raw)
     merged_df = merged_df.join(shortest_df['distance'])
 
     return merged_df
