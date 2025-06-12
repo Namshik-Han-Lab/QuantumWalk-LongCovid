@@ -392,47 +392,7 @@ def main():
     logging.info("SIP network construction process finished.")
 
 
-# --- Optional: Function to Read Back Network ---
-# (read_network remains the same as in v2)
-def read_network(config_path: str = "config.json") -> Optional[nx.Graph]:
-    """Reads a previously saved SIP network graph (pickle file)."""
-    try:
-        with open(config_path) as f:
-            config = json.load(f)
-        combined_score = config.get("combined_score", 700)
-        result_dir = Path(config.get("result_dir", "./results"))
-        file_path = result_dir / f"SIP_network_combined_{combined_score}.pkl"
-
-        logging.info(f"Attempting to load network from: {file_path}")
-        if not file_path.exists():
-            logging.error(f"Network file not found: {file_path}")
-            return None
-
-        with open(file_path, 'rb') as f:
-            G = pickle.load(f)
-
-        logging.info(f"Graph loaded successfully from: {file_path}")
-        logging.info(f"Number of nodes: {G.number_of_nodes():,}")
-        logging.info(f"Number of edges: {G.number_of_edges():,}")
-        return G
-
-    except FileNotFoundError:
-        logging.error(f"Configuration file not found: {config_path}")
-        return None
-    except (KeyError, json.JSONDecodeError) as e:
-         logging.error(f"Error reading configuration ({config_path}) for loading network: {e}")
-         return None
-    except (IOError, pickle.UnpicklingError) as e:
-        logging.error(f"Error reading or unpickling network file {file_path}: {e}")
-        return None
-    except Exception as e:
-        logging.error(f"An unexpected error occurred while loading the network: {e}")
-        return None
-
 # --- Script Entry Point ---
 if __name__ == '__main__':
     main()
-    # Example usage of read_network (optional)
-    # loaded_graph = read_network()
-    # if loaded_graph:
-    #     print("Loaded graph successfully.")
+
