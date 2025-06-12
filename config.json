@@ -5,7 +5,7 @@
   "string_links_file": "data/9606.protein.links.v11.5.txt",
   "result_dir": "result",
   "num_processes": 15,
-  "combined_score": 150,
+  "combined_score": 400,
   "chunk_size": 50000,
   "maxtasksperchild": 100
 }
