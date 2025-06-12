@@ -1,0 +1,11 @@
+{
+  "dip_file": "data/covid_krogan_ms_result.txt",
+  "dep_file": "data/dep_6m_acute_long_severe.tsv",
+  "string_info_file": "data/9606.protein.info.v11.5.txt",
+  "string_links_file": "data/9606.protein.links.v11.5.txt",
+  "result_dir": "result",
+  "num_processes": 15,
+  "combined_score": 150,
+  "chunk_size": 50000,
+  "maxtasksperchild": 100
+}
