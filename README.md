@@ -5,7 +5,7 @@
 
 ## Overview
 
-This project is a bioinformatics pipeline that utilizes a **Quantum Walk** algorithm to identify genes associated with Long COVID. It integrates Protein-Protein Interaction (PPI) data to construct a multiplex network, then runs a quantum walk simulation on it to predict and prioritize genes highly associated with Long COVID.
+This project is a bioinformatics pipeline that utilizes a **Quantum Walk** algorithm to identify genes associated with Long COVID. It integrates Protein-Protein Interaction (PPI) data to construct a SIP network, then runs a quantum walk simulation on it to predict and prioritize genes highly associated with Long COVID.
 
 The complete pipeline consists of the following main stages:
 
