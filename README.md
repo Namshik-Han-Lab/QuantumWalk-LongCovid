@@ -9,7 +9,7 @@ This project is a bioinformatics pipeline that utilizes a **Quantum Walk** algor
 
 The complete pipeline consists of the following main stages:
 
-1.  **Data Integration and Network Construction**: Integrates PPI data from multiple sources such as DIP, DEP, and STRING to generate a weighted SIP (Systematic Interaction Profile) network.
+1.  **Data Integration and Network Construction**: Integrates PPI data from multiple sources such as DIP, DEP, and STRING to generate a SIP network.
 2.  **Quantum Walk Simulation**: Executes a quantum walk algorithm on the constructed network to calculate the importance of each node (gene).
 3.  **Results Analysis and Gene Identification**: Analyzes the results of the quantum walk to produce a list of genes predicted to be most relevant to Long COVID.
 
