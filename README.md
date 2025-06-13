@@ -34,7 +34,7 @@ pip install pandas networkx numpy scipy hiperwalk
 
 First, clone this repository to your local machine.
 ```bash
-git clone [https://github.com/Namshik-Han-Lab/QuantumWalk-LongCovid.git](https://github.com/Namshik-Han-Lab/QuantumWalk-LongCovid.git)
+git clone https://github.com/Namshik-Han-Lab/QuantumWalk-LongCovid.git
 cd QuantumWalk-LongCovid
 ```
 
@@ -45,20 +45,6 @@ Place all required input data files in the `data/` directory. The paths and file
 **3. Configuration**
 
 Open the `config.json` file in the project's root directory to configure the pipeline's execution environment. An example `config.json` is provided below:
-
-```json
-{
-  "dip_file": "data/covid_krogan_ms_result.txt",
-  "dep_file": "data/dep_6m_acute_long_severe.tsv",
-  "string_info_file": "data/9606.protein.info.v11.5.txt",
-  "string_links_file": "data/9606.protein.links.v11.5.txt",
-  "result_dir": "result",
-  "num_processes": 15,
-  "combined_score": 150,
-  "chunk_size": 50000,
-  "maxtasksperchild": 100
-}
-```
 
 **Key Configuration Details:**
 * `dip_file`, `dep_file`, `string_info_file`, `string_links_file`: Paths to the input data files used for network construction.
