@@ -1,32 +1,19 @@
 # QuantumWalk-LongCovid
 
-create_SIP_network
-
-A Python pipeline to build a SIP (Systematic Interaction Profile) network using DIP, DEP, and STRING resources.
-
-Defaults: If any of the above keys are missing, safe defaults will be applied (e.g. half of your CPU cores for num_processes, 10000 for chunk_size, etc.).
-
-🛠️ Dependencies
-	•	Python 3.7+
-	•	pandas
-	•	networkx
-
-Install via:
-
-pip install pandas networkx
-
-pandas>=1.0
-networkx>=2.5
-
-🚀 Usage
-	1.	Clone or download the repository.
-	2.	Place your config.json in the project root (or update paths inside it).
-
-
-python create_SIP_network.py
-
-All outputs (graphs in Pickle format, logs, etc.) will appear under the directory specified by result_dir.
-
-📝 License
-
-Distributed under the MIT License. See LICENSE for details.
+Quantum Walk on a Multiplex Network for Identification of Genes Associated with Long COVIDOverviewThis project is a bioinformatics pipeline that utilizes a Quantum Walk on a Multiplex Network algorithm to identify genes associated with Long COVID. It integrates Protein-Protein Interaction (PPI) data to construct a multiplex network, then runs a quantum walk simulation on it to predict and prioritize genes highly associated with Long COVID.The complete pipeline consists of the following main stages:Data Integration and Network Construction: Integrates PPI data from multiple sources such as DIP, DEP, and STRING to generate a weighted SIP (Systematic Interaction Profile) network.Quantum Walk Simulation: Executes a quantum walk algorithm on the constructed network to calculate the importance of each node (gene).Results Analysis and Gene Identification: Analyzes the results of the quantum walk to produce a list of genes predicted to be most relevant to Long COVID.🛠️ DependenciesTo run this pipeline, you will need the following libraries:Python 3.7+pandasnetworkxnumpyscipyhiperwalkYou can install the necessary libraries using pip:pip install pandas networkx numpy scipy hiperwalk
+🚀 Usage1. Clone RepositoryFirst, clone this repository to your local machine.git clone https://github.com/Namshik-Han-Lab/QuantumWalk-LongCovid.git
+cd QuantumWalk-LongCovid
+2. Prepare DataPlace all required input data files in the data/ directory. The paths and filenames specified in the config.json file must match the actual files.3. ConfigurationOpen the config.json file in the project's root directory to configure the pipeline's execution environment. An example config.json is provided below:{
+  "dip_file": "data/covid_krogan_ms_result.txt",
+  "dep_file": "data/dep_6m_acute_long_severe.tsv",
+  "string_info_file": "data/9606.protein.info.v11.5.txt",
+  "string_links_file": "data/9606.protein.links.v11.5.txt",
+  "result_dir": "result",
+  "num_processes": 15,
+  "combined_score": 150,
+  "chunk_size": 50000,
+  "maxtasksperchild": 100
+}
+Key Configuration Details:dip_file, dep_file, string_info_file, string_links_file: Paths to the input data files used for network construction.result_dir: The directory where all outputs (network files, logs, gene lists, etc.) will be saved.num_processes: The number of CPU cores to use for data processing.combined_score: The minimum score (threshold) to use when filtering interactions from the STRING database.chunk_size: The number of rows to read into memory at a time when processing large files.(If there are parameters related to the quantum walk, additional explanations should be added here.)4. Run PipelineThe entire pipeline is executed by running several scripts in sequence. (The commands below should be adjusted according to the actual script names in the project.)Step 1: Create SIP Networkpython create_SIP_network.py
+This script uses the data specified in config.json to create a sip_network.pickle file in the result/ directory.Step 2: Run Quantum Walkpython run_quantum_walk.py
+This script loads the generated SIP network, performs the quantum walk simulation, and saves the result analysis files in the result/ directory.📂 OutputOnce the pipeline execution is complete, the following files will be generated in your result_dir:sip_network.pickle: The integrated protein-protein interaction network file. It can be loaded using the networkx library.quantum_walk_results.csv: A CSV file containing the quantum walk simulation results for each gene (e.g., final probability, rank).pipeline.log: A log file that records the entire execution process of the pipeline, including warnings and errors.📝 LicenseThis project is distributed under the MIT License. For more details, see the LICENSE file.📜 CitationIf you find this work useful, we would appreciate it if you cite the relevant publication. (Add citation information here once the paper is published.)
