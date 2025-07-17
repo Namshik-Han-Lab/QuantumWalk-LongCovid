@@ -62,20 +62,28 @@ The entire pipeline is executed by running several scripts in sequence. (The com
 ```bash
 python create_SIP_network.py
 ```
-This script uses the data specified in `config.json` to create a `sip_network.pickle` file in the `result/` directory.
+This script uses the data specified in `config.json` to create a `sip_network.pkl` file in the `result/` directory.
 
 **Step 2: Run Quantum Walk**
 ```bash
-python run_quantum_walk.py
+python network_walking.py
 ```
-This script loads the generated SIP network, performs the quantum walk simulation, and saves the result analysis files in the `result/` directory.
+This script loads the generated SIP network, performs the quantum walk simulation, and saves `COVID_RWR_result.pkl` and `COVID_coined_result.pkl` in the `result/` directory.
+
+**Step 3: Generate mixed Result**
+```bash
+python generate_mixed_result.py
+```
+This script loads the generated network walking results, calculates the quantum walk mixing time, and saves `quantum_walk_result.csv` in the `result/` directory.
 
 ### 📂 Output
 
 Once the pipeline execution is complete, the following files will be generated in your `result_dir`:
 
-* **`sip_network.pickle`**: The integrated protein-protein interaction network file. It can be loaded using the `networkx` library.
-* **`quantum_walk_results.csv`**: A CSV file containing the quantum walk simulation results for each gene (e.g., final probability, rank).
+* **`sip_network.pkl`**: The integrated protein-protein interaction network file. It can be loaded using the `networkx` library.
+* **`COVID_RWR_result.pkl`**: Random walk results as Dataframe. 
+* **`COVID_coined_result.pkl`**: Quantum walk results as Dataframe.
+* **`quantum_walk_result.csv`**: A CSV file containing the quantum walk simulation results for each gene (e.g., final probability, rank).
 * **`pipeline.log`**: A log file that records the entire execution process of the pipeline, including warnings and errors.
 
 ### 📝 License
