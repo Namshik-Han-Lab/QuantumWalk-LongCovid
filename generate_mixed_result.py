@@ -5,12 +5,11 @@ import networkx as nx
 
 from scipy.spatial.distance import euclidean
 
-rwr_result_df = pickle.load(open('COVID_RWR_result.pkl', 'rb'))
-coined_result_df = pickle.load(open('COVID_coined_result.pkl', 'rb'))
+rwr_result_df = pickle.load(open('/result/COVID_RWR_result.pkl', 'rb'))
+coined_result_df = pickle.load(open('/result/COVID_coined_result.pkl', 'rb'))
 
-covid_Graph_df = pd.read_csv('MP_SIP_longcovid_network.csv', names=['node1', 'node2'])
-covid_Graph = nx.Graph()
-covid_Graph.add_edges_from(covid_Graph_df.values)
+with open('sip_network.pkl', 'rb') as f:
+    covid_Graph = pickle.load(f)
 
 protein_df = pd.read_table('9606.protein.info.v12.0.txt')
 protein_df['string_id']= protein_df['#string_protein_id'].str.split('.').str[1]
@@ -53,4 +52,4 @@ def FinalDataGeneration():
     return merged_df
 
 result_df = FinalDataGeneration()
-result_df.to_csv('result.csv')
+result_df.to_csv('quantum_walk_result.csv')
