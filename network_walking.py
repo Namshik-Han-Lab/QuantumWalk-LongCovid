@@ -9,9 +9,8 @@ seed_value = 777
 random.seed(seed_value)
 np.random.seed(seed_value) 
 
-long_covid_Graph_df = pd.read_csv('MP_SIP_longcovid_network.csv', names=['node1', 'node2'])
-long_covid_Graph_raw = nx.Graph()
-long_covid_Graph_raw.add_edges_from(long_covid_Graph_df.values)
+with open('sip_network.pkl', 'rb') as f:
+    long_covid_Graph_raw = pickle.load(f)
 
 id_to_number = dict(zip(long_covid_Graph_raw.nodes(), range(len(long_covid_Graph_raw.nodes()))))
 number_to_id = {v: k for k, v in id_to_number.items()}
@@ -31,7 +30,7 @@ pagerank_result = nx.pagerank(covid_Graph, personalization={covid_node: 1}, max_
 pagerank_result_sr = pd.Series(pagerank_result)
 pagerank_result_sr.rename(index= number_to_id, inplace=True)
 
-pickle.dump(pagerank_result_sr, open('/data/jp2079/QWP_Data/result/COVID_RWR_result.pkl', 'wb'))
+pickle.dump(pagerank_result_sr, open('/result/COVID_RWR_result.pkl', 'wb'))
 
 coined = hpw.Coined(graph = covid_Graph_hpw)
 coined_uniform_state = coined.uniform_state([covid_node])
@@ -41,4 +40,4 @@ coined_result = coined.probability_distribution(coined_final_state)
 coined_result_df = pd.DataFrame(coined_result).T
 coined_result_df.rename(index= number_to_id, inplace=True)
 
-pickle.dump(coined_result_df, open('COVID_coined_result.pkl, 'wb'))
+pickle.dump(coined_result_df, open('/result/COVID_coined_result.pkl, 'wb'))
