@@ -60,7 +60,7 @@ The entire pipeline is executed by running several scripts in sequence. (The com
 
 **Step 1: Create SIP Network**
 ```bash
-python create_SIP_network.py
+python create_SIP_network_with_covid19_edges.py
 ```
 This script uses the data specified in `config.json` to create a `sip_network.pkl` file in the `result/` directory.
 
