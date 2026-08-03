@@ -42,6 +42,9 @@ cd QuantumWalk-LongCovid
 
 Place all required input data files in the `data/` directory. The paths and filenames specified in the `config.json` file must match the actual files.
 
+Please download the PPI link data from STRING DB
+https://stringdb-downloads.org/download/protein.links.v11.5/9606.protein.links.v11.5.txt.gz
+
 **3. Configuration**
 
 Open the `config.json` file in the project's root directory to configure the pipeline's execution environment. An example `config.json` is provided below:
