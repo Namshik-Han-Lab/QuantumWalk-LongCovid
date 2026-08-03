@@ -42,7 +42,8 @@ cd QuantumWalk-LongCovid
 
 Place all required input data files in the `data/` directory. The paths and filenames specified in the `config.json` file must match the actual files.
 
-Please download the PPI link data from STRING DB
+Please download the PPI link data from STRING DB, which excluded from the Git repository due to large size.
+
 https://stringdb-downloads.org/download/protein.links.v11.5/9606.protein.links.v11.5.txt.gz
 
 **3. Configuration**
